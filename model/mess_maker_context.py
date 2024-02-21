@@ -14,7 +14,7 @@ class MessMakerContext(Context):
         quadrant = self.find_quadrant(quadrant_name)
         if quadrant is not None:
             quadrant.is_cleaned = False
-        threading.Timer(2, self.run).start()
+        threading.Timer(1, self.run).start()
 
     def find_quadrant(self, quadrant_name):
         for quadrant in self.quadrants:
