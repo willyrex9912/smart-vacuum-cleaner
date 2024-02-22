@@ -1,7 +1,8 @@
-from model.quadrant import Quadrant
+from model.quadrant.quadrant import Quadrant
 import logging
 import time
 from typing import List
+from enums.cleaner_type_enum import CleanerTypeEnum
 
 logging.basicConfig(level=logging.INFO, format='[%(threadName)s] (%(levelname)s) %(message)s')
 
@@ -33,7 +34,18 @@ class VacuumCleaner:
         # logging.info("Testing if its necessary to clean the quadrant")
         return not self.current_quadrant.is_cleaned
 
-    def work_quadrant(self, quadrants: List[Quadrant]):
+    def work(self, quadrants: List[Quadrant], cleaner_type: CleanerTypeEnum):
+        if cleaner_type == CleanerTypeEnum.SMART:
+            self.smart_work(quadrants)
+        elif cleaner_type == CleanerTypeEnum.STUPID:
+            self.stupid_work(quadrants)
+
+    def smart_work(self, quadrants: List[Quadrant]):
         if self.is_necessary_to_clean():
+            self.clean()
+        self.move(quadrants)
+
+    def stupid_work(self, quadrants: List[Quadrant]):
+        if not self.is_necessary_to_clean():
             self.clean()
         self.move(quadrants)

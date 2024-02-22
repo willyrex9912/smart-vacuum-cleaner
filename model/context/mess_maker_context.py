@@ -1,6 +1,6 @@
 from typing import List
-from model.quadrant import Quadrant
-from model.context import Context
+from model.quadrant.quadrant import Quadrant
+from model.context.context import Context
 import threading
 
 
