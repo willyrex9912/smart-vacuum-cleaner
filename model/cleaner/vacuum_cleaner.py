@@ -22,7 +22,7 @@ class VacuumCleaner:
             self.move_right(quadrants)
         else:
             self.move_left(quadrants)
-        # logging.info("Cleaner moved to quadrant " + self.current_quadrant.name)
+        logging.info("Cleaner moved to quadrant " + self.current_quadrant.name)
 
     def move_left(self, quadrants: List[Quadrant]):
         self.current_quadrant = quadrants[0]
@@ -31,7 +31,7 @@ class VacuumCleaner:
         self.current_quadrant = quadrants[1]
 
     def is_necessary_to_clean(self):
-        # logging.info("Testing if its necessary to clean the quadrant")
+        logging.info("Testing if its necessary to clean the quadrant")
         return not self.current_quadrant.is_cleaned
 
     def work(self, quadrants: List[Quadrant], cleaner_type: CleanerTypeEnum):
